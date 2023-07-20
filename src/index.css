@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-600px);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideOut {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    90% {
+      transform: translateY(-900px);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(-900px);
+      opacity: 0;
+    }
+  }
+
+  .slideIn {
+    animation-name: slideIn;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  }
+
+  .slideOut {
+    animation-name: slideOut;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  }
+}
