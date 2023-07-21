@@ -68,7 +68,7 @@ const Product = () => {
         </div>
         <div className="mt-6 md:mt-10">
           <p className="font-montserrat text-lg mb-4">Headphones For You!</p>
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-5">
+          <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
             {products.map((data) => (
               <div key={data.id} className="mx-auto w-[18rem] md:w-[14.5rem] ">
                 <div className="bg-white flex justify-center items-center rounded-t-lg relative w-full border border-[#f5f6f6]">
