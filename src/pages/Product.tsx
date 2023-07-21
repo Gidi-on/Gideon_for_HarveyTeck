@@ -95,7 +95,7 @@ const Product = () => {
                     <div className="rounded-lg bg-blue-600/30 backdrop-brightness-75 w-full h-full flex justify-center items-center">
                       <div
                         style={{ backgroundImage: `url(${product.image})` }}
-                        className="bg-cover bg-center w-10 h-10 lg:w-20 lg:h-20"
+                        className="bg-cover w-10 h-10 lg:w-20 lg:h-20"
                       >
                         <div className="w-full h-full flex justify-center items-center bg-blue-600/30 backdrop-brightness-75"></div>
                       </div>
@@ -105,19 +105,19 @@ const Product = () => {
                     <div className="rounded-lg bg-green-600/30 backdrop-brightness-75 w-full h-full flex justify-center items-center">
                       <div
                         style={{ backgroundImage: `url(${product.image})` }}
-                        className="bg-cover bg-center w-10 h-10 lg:w-20 lg:h-20"
+                        className="bg-cover w-10 h-10 lg:w-20 lg:h-20"
                       >
                         <div className="w-full h-full flex justify-center items-center bg-green-600/30 backdrop-brightness-75"></div>
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-center items-center grow bg-white border-2 border-gray-200 rounded-lg hover:border hover:border-black bg-red-600/30 backdrop-brightness-75">
-                    <div className="rounded-lg bg-red-600/30 backdrop-brightness-75 w-full h-full flex justify-center items-center">
+                    <div className="rounded-lg bg-red-600/30 backdrop-brightness-75 w-full h-full flex justify-center items-center ">
                       <div
                         style={{ backgroundImage: `url(${product.image})` }}
-                        className="bg-cover bg-center w-10 h-10 lg:w-20 lg:h-20"
+                        className="bg-cover w-10 h-10 lg:w-20 lg:h-20"
                       >
-                        <div className="w-full h-full flex justify-center items-center bg-red-600/30 backdrop-brightness-75"></div>
+                        <div className="w-full h-full flex justify-center items-center bg-red-600/30 backdrop-brightness-75 "></div>
                       </div>
                     </div>
                   </div>
@@ -125,7 +125,7 @@ const Product = () => {
                     <div className="rounded-lg bg-purple-600/30 backdrop-brightness-75 w-full h-full flex justify-center items-center">
                       <div
                         style={{ backgroundImage: `url(${product.image})` }}
-                        className="bg-cover bg-center w-10 h-10 lg:w-20 lg:h-20 bg-purple-600/30 backdrop-brightness-75"
+                        className="bg-cover w-10 h-10 lg:w-20 lg:h-20 bg-purple-600/30 backdrop-brightness-75"
                       >
                         <div className="w-full h-full flex justify-center items-center bg-purple-600/30 backdrop-brightness-75"></div>
                       </div>
