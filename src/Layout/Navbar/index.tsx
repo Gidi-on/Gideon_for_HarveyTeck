@@ -25,11 +25,11 @@ const Navbar = () => {
           <p>Get 50% on Selected Items | Shop Now</p>
         </span>
         <div className="flex gap-x-5 md:gap-x-2">
-          <span className="flex items-center gap-x-1">
+          <span className="flex items-center gap-x-1 cursor-pointer">
             <p>Eng</p>
             <RiArrowDropDownLine className="text-2xl" />
           </span>
-          <span className="flex items-center gap-x-1">
+          <span className="flex items-center gap-x-1 cursor-pointer">
             <p>Location</p>
             <RiArrowDropDownLine className="text-2xl" />
           </span>
@@ -108,7 +108,10 @@ const Navbar = () => {
       >
         {links.map((link) => (
           <ul key={link.id} className="flex flex-col">
-            <li className="text-gray-500 text-lg hover:text-primary text-center py-2 font-semibold cursor-pointer">
+            <li
+              onClick={handleMobile}
+              className="text-gray-500 text-lg hover:text-primary text-center py-2 font-semibold cursor-pointer"
+            >
               {link.title}
             </li>
           </ul>
