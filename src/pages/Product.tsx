@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import axios from "axios";
 import { Suspense, useEffect, useState } from "react";
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsTruck } from "react-icons/bs";
@@ -9,26 +8,13 @@ import { MdListAlt } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Layout from "../Layout/Layout";
+import { GetSingleProduct } from "../api";
+import { ProductInterface } from "../interfaces";
 import Spinner from "../utils/Spinner";
-
-interface Rating {
-  rate: number;
-  count: number;
-}
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: Rating;
-}
 
 const Product = () => {
   const navigate = useNavigate();
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<ProductInterface | null>(null);
   const [count, setCount] = useState(0);
   const [items, setItems] = useState(11);
   const { id } = useParams();
@@ -60,19 +46,17 @@ const Product = () => {
     toast.success("All Done!");
   };
 
-  // fetching product details
+  //fetching product data from mock server
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchProduct = async () => {
       try {
-        const response = await axios.get<Product>(
-          `https://fakestoreapi.com/products/${id}`
-        );
-        setProduct(response.data);
+        const data = await GetSingleProduct(Number(id));
+        setProduct(data);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error(error);
       }
     };
-    void fetchProducts();
+    void fetchProduct();
   }, [id]);
 
   return (
@@ -91,46 +75,51 @@ const Product = () => {
                 </div>
 
                 <div className="flex gap-x-4 h-[20%] md:h-[15%] lg:h-[20%] ">
-                  <div className="flex justify-center items-center grow bg-white border-2 border-gray-200 rounded-lg hover:border hover:border-black bg-blue-600/30 backdrop-brightness-75">
-                    <div className="rounded-lg bg-blue-600/30 backdrop-brightness-75 w-full h-full flex justify-center items-center">
-                      <div
-                        style={{ backgroundImage: `url(${product.image})` }}
-                        className="bg-cover w-10 h-10 lg:w-20 lg:h-20"
-                      >
-                        <div className="w-full h-full flex justify-center items-center bg-blue-600/30 backdrop-brightness-75"></div>
-                      </div>
-                    </div>
+                  <div className="flex justify-center items-center grow border border-gray-200 rounded-lg hover:border hover:border-black bg-white">
+                    <img
+                      src={product.image}
+                      alt="image"
+                      className="w-10 h-10 lg:w-20 lg:h-20"
+                      style={{ filter: "sepia(30%)" }}
+                    />
                   </div>
-                  <div className="flex justify-center items-center grow bg-white border-2 border-gray-200 rounded-lg hover:border hover:border-black bg-green-600/30 backdrop-brightness-75">
-                    <div className="rounded-lg bg-green-600/30 backdrop-brightness-75 w-full h-full flex justify-center items-center">
-                      <div
-                        style={{ backgroundImage: `url(${product.image})` }}
-                        className="bg-cover w-10 h-10 lg:w-20 lg:h-20"
-                      >
-                        <div className="w-full h-full flex justify-center items-center bg-green-600/30 backdrop-brightness-75"></div>
-                      </div>
-                    </div>
+                  <div className="flex justify-center items-center grow border border-gray-200 rounded-lg hover:border hover:border-black bg-white">
+                    <img
+                      src={product.image}
+                      alt="image"
+                      className="w-10 h-10 lg:w-20 lg:h-20"
+                      style={{ filter: "sepia(40%)" }}
+                    />
                   </div>
-                  <div className="flex justify-center items-center grow bg-white border-2 border-gray-200 rounded-lg hover:border hover:border-black bg-red-600/30 backdrop-brightness-75">
-                    <div className="rounded-lg bg-red-600/30 backdrop-brightness-75 w-full h-full flex justify-center items-center ">
-                      <div
-                        style={{ backgroundImage: `url(${product.image})` }}
-                        className="bg-cover w-10 h-10 lg:w-20 lg:h-20"
-                      >
-                        <div className="w-full h-full flex justify-center items-center bg-red-600/30 backdrop-brightness-75 "></div>
-                      </div>
-                    </div>
+                  <div className="flex justify-center items-center grow border border-gray-200 rounded-lg hover:border hover:border-black bg-white">
+                    <img
+                      src={product.image}
+                      alt="image"
+                      className="w-10 h-10 lg:w-20 lg:h-20"
+                      style={{ filter: "grayscale(70%)" }}
+                    />
                   </div>
-                  <div className="flex justify-center items-center grow bg-white border-2 border-gray-200 rounded-lg hover:border hover:border-black bg-purple-600/30 backdrop-brightness-75">
+                  <div className="flex justify-center items-center grow border border-gray-200 rounded-lg hover:border hover:border-black bg-white">
+                    <img
+                      src={product.image}
+                      alt="image"
+                      className="w-10 h-10 lg:w-20 lg:h-20"
+                      style={{ filter: "brightness(100%)" }}
+                    />
+                  </div>
+                  {/* <div className="flex justify-center items-center grow bg-white border-2 border-gray-200 rounded-lg hover:border hover:border-black bg-purple-600/30 backdrop-brightness-75">
                     <div className="rounded-lg bg-purple-600/30 backdrop-brightness-75 w-full h-full flex justify-center items-center">
                       <div
-                        style={{ backgroundImage: `url(${product.image})` }}
+                        style={{
+                          backgroundImage: `url(${product.image})`,
+                          filter: "sepia(100%)",
+                        }}
                         className="bg-cover w-10 h-10 lg:w-20 lg:h-20 bg-purple-600/30 backdrop-brightness-75"
                       >
                         <div className="w-full h-full flex justify-center items-center bg-purple-600/30 backdrop-brightness-75"></div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="md:w-1/2 ">

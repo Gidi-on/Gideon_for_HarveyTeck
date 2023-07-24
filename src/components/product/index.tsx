@@ -1,42 +1,27 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import axios from "axios";
 import { Suspense, useEffect, useState } from "react";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { GetAllProducts } from "../../api";
+import { ProductInterface } from "../../interfaces";
 import Spinner from "../../utils/Spinner";
 import { sort } from "../../utils/data";
-
-interface Rating {
-  rate: number;
-  count: number;
-}
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: Rating;
-}
 
 const Product = () => {
   const navigate = useNavigate();
 
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductInterface[]>([]);
 
-  // fetching product from API server
+  // fetching all products from mock server
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get<Product[]>(
-          "https://fakestoreapi.com/products"
-        );
-        setProducts(response.data);
+        const data = await GetAllProducts();
+        setProducts(data);
       } catch (error) {
         console.error(error);
       }
