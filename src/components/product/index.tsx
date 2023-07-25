@@ -6,13 +6,19 @@ import { Suspense, useEffect, useState } from "react";
 import { AiFillStar, AiOutlineHeart } from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { GetAllProducts } from "../../api";
 import { ProductInterface } from "../../interfaces";
 import Spinner from "../../utils/Spinner";
 import { sort } from "../../utils/data";
+import Button from "../Button";
 
 const Product = () => {
   const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    toast.success("Added to cart!");
+  };
 
   const [products, setProducts] = useState<ProductInterface[]>([]);
 
@@ -86,9 +92,11 @@ const Product = () => {
                     </span>
                     <p className="text-sm">({data.rating.count})</p>
                   </div>
-                  <button className="mt-3 md:mt-5 border border-primary rounded-3xl px-5 py-1.5 text-primary hover:bg-primary hover:text-white">
-                    Add to Cart
-                  </button>
+                  <Button
+                    children="Add to cart"
+                    onClick={handleSubmit}
+                    secondary={true}
+                  />
                 </div>
               </div>
             ))}

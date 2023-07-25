@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Layout from "../Layout/Layout";
 import { GetSingleProduct } from "../api";
+import Button from "../components/Button";
 import { ProductInterface } from "../interfaces";
 import Spinner from "../utils/Spinner";
 
@@ -187,18 +188,16 @@ const Product = () => {
                     </span>
                   </div>
                   <div className="mt-5 md:mt-0 flex gap-x-5 lg:gap-x-8">
-                    <button
+                    <Button
+                      children="Buy Now"
                       onClick={handleSubmit}
-                      className="bg-primary border-2 border-primary px-10 py-1.5 md:py-2 mt-2 md:mt-4 lg:px-7 rounded-2xl lg:rounded-[2rem] text-xs lg:text-lg lg:font-medium text-white hover:text-primary hover:bg-white"
-                    >
-                      Buy Now
-                    </button>
-                    <button
+                      primary={true}
+                    />
+                    <Button
+                      children="Add to cart"
                       onClick={handleSubmit}
-                      className="bg-white border-2 border-primary px-10 py-1.5 md:py-2 mt-2 md:mt-4 lg:px-7 rounded-2xl lg:rounded-[2rem] text-xs lg:text-lg lg:font-medium text-primary hover:text-white hover:bg-primary"
-                    >
-                      Add to Cart
-                    </button>
+                      secondary={true}
+                    />
                   </div>
                   <div className="border-2 border-gray-100 rounded-lg mt-4 p-2">
                     <span className="flex items-start gap-x-1">
